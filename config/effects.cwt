@@ -564,7 +564,17 @@ alias[effect:create_building] = {
     ## cardinality = 0..1
     level = arable_land
     ## cardinality = 0..1
-    level = urbanization
+    ### Mutually exclusive with level
+    add_ownership = {
+        country = {
+            country = scope[country]
+            levels = int
+            ## cardinality = 0..1
+            type = <building>
+            ## cardinality = 0..1
+            region = <state_region>
+        }
+    }
 }
 
 ### Creates a pop in the scoped state
@@ -961,13 +971,6 @@ alias[effect:create_trade_route] = {
     direction = export
 }
 
-### Create a truce betweeen two countries create_truce = { 	tcountry = country scope/tag 	months = integer }
-alias[effect:create_truce] = {
-    country = scope[country]
-    country = <country_definition>
-    months = int_value_field
-}
-
 ### Deactivates a law for a country
 alias[effect:deactivate_law] = scope[law_type]
 
@@ -975,7 +978,7 @@ alias[effect:deactivate_law] = scope[law_type]
 alias[effect:deactivate_parties] = yes
 
 ### Ends a truce betweeen two countries end_truce = { 	tcountry = country scope/tag 	months = integer }
-alias[effect:end_truce] = replace_me
+alias[effect:end_truce] = scope[country]
 
 ### Makes a country independent. make_independent = bool
 alias[effect:make_independent] = bool
@@ -1014,8 +1017,8 @@ alias[effect:set_capital] = <state_region>
 ### Sets the type of country for a country, for history
 alias[effect:set_country_type] = enum[country_type]
 
-### Set diplomats expelled = bool
-alias[effect:set_diplomats_expelled] = bool
+### Expels diplomats from target country in scoped country  
+alias[effect:set_diplomats_expelled] = scope[country]
 
 ### Sets the government wage level of scoped country set_government_wage_level = very_low/low/medium/high/very_high
 alias[effect:set_government_wage_level] = enum[wage_level]
@@ -1401,3 +1404,85 @@ alias[effect:start_enactment] = scope[law_type]
 
 ### Sets the establishment date of scope company  
 alias[effect:set_company_establishment_date] = date_field
+
+###############
+# Effects added in 1.7
+###############
+
+alias[effect:add_cohesion_number] = value_field
+
+alias[effect:add_cohesion_percent] = value_field
+
+alias[effect:add_leverage] = value_field
+
+alias[effect:add_liberty_desire] = value_field
+
+alias[effect:add_lobby_member] = scope[interest_group]
+
+alias[effect:add_principle] = scope[principle]
+
+alias[effect:add_progress] = value_field
+
+alias[effect:cancel_imposition] = bool
+
+alias[effect:change_appeasement] = {
+    amount = value_field
+    factor = <appeasement>
+}
+
+alias[effect:create_bidirectional_truce] = {
+    tcountry = <country_definition>
+    tcountry = scope[country]
+    months = int
+}
+
+alias[effect:create_diplomatic_catalyst] = {
+    type = <catalyst>
+    target = scope[country]
+}
+
+alias[effect:create_political_lobby] = {
+    type = <lobby>
+    target = scope[country]
+    ## cardinality = 0..inf
+    add_interest_group = scope[interest_group]
+}
+
+alias[effect:create_power_bloc] = {
+    name = localisation
+    map_color = scalar
+    identity = <identity>
+    ## cardinality = 1..inf
+    principle = <principle>
+    ## cardinality = 0..inf
+    founding_date = end
+    ## cardinality = 1..inf
+    member = scope[country]
+}
+
+alias[effect:create_unidirectional_truce] = {
+    tcountry = <country_definition>
+    tcountry = scope[country]
+    months = int
+}
+
+alias[effect:decrease_autonomy] = bool
+
+alias[effect:disband_political_lobby] = bool
+
+alias[effect:increase_autonomy] = bool
+
+alias[effect:join_power_bloc] = scope[country]
+
+alias[effect:join_war] = scalar # TODO: I have no idea how it works
+
+alias[effect:regime_change] = scope[country]
+
+alias[effect:remove_lobby_member] = scope[interest_group]
+
+alias[effect:remove_principle] = <principle>
+
+alias[effect:set_bar_progress] = {
+    name = scalar
+    value = value_field
+}
