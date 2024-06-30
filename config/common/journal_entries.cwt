@@ -132,7 +132,7 @@ journal_entry = {
     ### A list of modifiers that apply while the journal is active
     modifiers_while_active = {
         ## cardinality = 0..inf
-        <modifier_container>
+        <static_modifier>
     }
 
     ## cardinality = 0..inf

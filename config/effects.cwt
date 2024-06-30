@@ -76,7 +76,7 @@ alias[effect:transfer_character] = scope[country]
 
 ### Adds a timed modifier effect to object in scope
 alias[effect:add_modifier] = {
-    name = <modifier_container>
+    name = <static_modifier>
     ## cardinality = 0..1
     enum[duration] = int
     ## cardinality = 0..1
@@ -86,7 +86,7 @@ alias[effect:add_modifier] = {
 }
 
 ### Removes a timed modifier effect to object in scope
-alias[effect:remove_modifier] = <modifier_container>
+alias[effect:remove_modifier] = <static_modifier>
 
 ### Removes interest group from revolution abandon_revolution = yes/no
 alias[effect:abandon_revolution] = bool
@@ -677,7 +677,7 @@ alias[effect:add_declared_interest] = <strategic_region>
 
 ### Adds an enactment-related timed modifier effect to object in scope
 alias[effect:add_enactment_modifier] = {
-    name = <modifier_container>
+    name = <static_modifier>
     ## cardinality = 0..1
     multiplier = value_field
 }

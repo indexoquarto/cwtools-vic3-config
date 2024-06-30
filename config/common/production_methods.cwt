@@ -29,7 +29,7 @@ production_method = {
     ### these modifiers are applied to the building after pm is changed. Duration is BUILDING_TIMED_MODIFIER_WEEKS
     timed_modifiers = {
         ## cardinality = 0..inf
-        <modifier_container>
+        <static_modifier>
     }
 
     ## cardinality = 0..1

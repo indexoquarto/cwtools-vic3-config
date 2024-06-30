@@ -54,7 +54,7 @@ single_alias[scaled_modifier] = {
 }
 
 single_alias[added_modifier] = {
-    modifier = <modifier_container>
+    modifier = <static_modifier>
     ## cardinality = 0..1
     enum[duration] = int
 }
