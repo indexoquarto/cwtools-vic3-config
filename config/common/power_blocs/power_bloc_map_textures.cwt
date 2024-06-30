@@ -1,0 +1,5 @@
+types = {
+    type[power_bloc_map_texture] = {
+        path = "game/common/power_bloc_map_textures"
+    }
+}

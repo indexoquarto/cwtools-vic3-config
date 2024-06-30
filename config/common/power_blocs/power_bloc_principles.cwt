@@ -1,0 +1,5 @@
+types = {
+    type[principle] = {
+        path = "game/common/power_bloc_principles"
+    }
+}

@@ -1,0 +1,5 @@
+types = {
+    type[power_bloc_coa_piece] = {
+        path = "game/common/power_bloc_coa_pieces"
+    }
+}

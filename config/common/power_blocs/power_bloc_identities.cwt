@@ -1,0 +1,5 @@
+types = {
+    type[identity] = {
+        path = "game/common/power_bloc_identities"
+    }
+}

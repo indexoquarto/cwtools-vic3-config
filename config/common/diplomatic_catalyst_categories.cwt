@@ -1,0 +1,5 @@
+types = {
+    type[catalyst_category] = {
+        path = "game/common/diplomatic_catalyst_categories"
+    }
+}
